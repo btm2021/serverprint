@@ -5,9 +5,17 @@ const pubnub = new PubNub({
     subscribeKey: "sub-c-1db3ee38-8f0e-11eb-968e-467c259650fa",
     uuid: uuid
 });
+const { exec } = require('child_process');
+const { createClient } = require('@supabase/supabase-js')
+const r = 'https://ajsrzteoovahabndebyp.supabase.co';
+const k = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqc3J6dGVvb3ZhaGFibmRlYnlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDQ2ODYyNTgsImV4cCI6MjAyMDI2MjI1OH0.TcA527gIcm_6HmaYgK28l3vIrHKbqc0TrI_GEBdw8sc';
+
+const supabase = createClient(r, k);
+
 const { printTable } = require('console-table-printer');
 
 const moment = require('moment');
+const { resolve } = require('path');
 const pathCSV_sanpham = `C:\\datatem\\dulieu_sanpham.csv`
 const pathCSV_dothe = `C:\\datatem\\dulieu_dothe.csv`
 
@@ -165,6 +173,7 @@ const option = [
     },
 
 ]
+
 function json2csv(jsonFile, options, delimiter = ',') {
     // Thêm 'index' vào tiêu đề
     const headers = ['index'].concat(options.map(opt => opt.headerName)).join(delimiter);
@@ -197,6 +206,20 @@ function formatSoVang(t) {
     }
     return objectFormat
 }
-function updateStatusInTem(type, id) {
+async function updateStatusInTem(list) {
+    return new Promise((resolve, reject) => {
 
+    })
 }
+async function fetchData() {
+    // Thay 'your_table' bằng tên bảng của bạn
+    exec('ls', (error, stdout, stderr) => {
+        console.log(stdout)
+    })
+}
+async function deleteFile_csv(fileName) {
+    return new Promise((resolve, reject) => {
+
+    })
+}
+fetchData()
